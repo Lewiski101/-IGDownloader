@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us — IGDownloader</title>
+    <meta name="description" content="Get in touch with the IGDownloader team. Report a bug, ask a question, or give feedback about our Instagram video downloader.">
+    <meta property="og:image" content="/img/favicon.png">
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+
+<!-- Navbar -->
+<header>
+    <a href="/" class="logo">
+        <i class="fa-solid fa-cloud-arrow-down"></i>
+        <span>IGDownloader</span>
+    </a>
+    <div class="menu-toggle" id="mobileMenuBtn">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </div>
+    <nav class="nav-right" id="navRight">
+        <a href="/">Home</a>
+        <a href="/#how">How it Works</a>
+        <a href="/#features">Features</a>
+        <a href="/privacy.html" class="mobile-only">Privacy Policy</a>
+        <a href="/terms.html" class="mobile-only">Terms of Service</a>
+    </nav>
+</header>
+
+<!-- Page Content -->
+<div class="page-content">
+    <h1>Contact Us</h1>
+    <p class="page-date">We typically respond within 24–48 hours.</p>
+
+    <p>Have a question, found a bug, or want to give us feedback? Fill in the form below and we'll get back to you as soon as possible.</p>
+
+    <!-- Contact Info Cards -->
+    <div class="contact-cards">
+        <div class="contact-card">
+            <i class="fa-solid fa-bug"></i>
+            <h3>Report a Bug</h3>
+            <p>A link not working? Let us know the URL and what happened, and we'll investigate.</p>
+        </div>
+        <div class="contact-card">
+            <i class="fa-solid fa-circle-question"></i>
+            <h3>General Questions</h3>
+            <p>Questions about how IGDownloader works, supported formats, or compatibility? Ask away.</p>
+        </div>
+        <div class="contact-card">
+            <i class="fa-solid fa-handshake"></i>
+            <h3>Business Enquiries</h3>
+            <p>Interested in advertising or partnership opportunities? Drop us a message.</p>
+        </div>
+    </div>
+
+    <!-- Contact Form -->
+    <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+            <input type="text" id="contactName" name="name" placeholder="Your Name" required>
+            <input type="email" id="contactEmail" name="email" placeholder="Your Email" required>
+        </div>
+        <select name="subject" id="contactSubject" required>
+            <option value="" disabled selected>Select a subject...</option>
+            <option value="bug">Report a Bug</option>
+            <option value="question">General Question</option>
+            <option value="business">Business / Advertising</option>
+            <option value="legal">Legal / Copyright</option>
+            <option value="other">Other</option>
+        </select>
+        <textarea name="message" id="contactMessage" placeholder="Describe your issue or question in detail..." required></textarea>
+        <button type="submit" class="submit-btn" id="contactSubmitBtn">
+            <i class="fa-solid fa-paper-plane"></i> Send Message
+        </button>
+        <div id="formSuccess" class="form-success" style="display:none;">
+            <i class="fa-solid fa-circle-check"></i>
+            Thank you! Your message has been sent. We'll get back to you within 24–48 hours.
+        </div>
+        <div id="formError" class="form-error" style="display:none;">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Something went wrong. Please try again or email us directly.
+        </div>
+    </form>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-col">
+            <a href="/" class="logo footer-logo">
+                <i class="fa-solid fa-cloud-arrow-down"></i>
+                <span>IGDownloader</span>
+            </a>
+            <p style="margin-top:15px; color:var(--text-muted); font-size:.9rem; max-width:260px;">The most powerful and privacy-respecting Instagram video downloader on the web.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/#how">How to use</a></li>
+                <li><a href="/#features">Features</a></li>
+                <li><a href="/#faq">FAQ</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Legal</h4>
+            <ul>
+                <li><a href="/privacy.html">Privacy Policy</a></li>
+                <li><a href="/terms.html">Terms of Service</a></li>
+                <li><a href="/contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="copyright">
+        &copy; 2026 IGDownloader. All rights reserved. Not affiliated with Instagram / Meta Platforms Inc.
+    </div>
+</footer>
+
+<script src="/js/main.js"></script>
+<script>
+function handleSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('contactSubmitBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+    // Simulate form submission (replace with real endpoint / EmailJS / Formspree)
+    setTimeout(() => {
+        btn.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'flex';
+        document.getElementById('contactForm').reset();
+    }, 1500);
+}
+</script>
+</body>
+</html>

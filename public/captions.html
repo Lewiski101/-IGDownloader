@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Captions Downloader - IGDownloader</title>
+    <meta name="description" content="Copy any Instagram caption or video description with one click. Simple, free, and fast.">
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+
+<header>
+    <a href="/" class="logo">
+        <i class="fa-solid fa-cloud-arrow-down"></i>
+        <span>IGDownloader</span>
+    </a>
+    <div class="menu-toggle" id="mobileMenuBtn">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+    <nav class="nav-right" id="navRight">
+        <a href="/">Home</a>
+        <a href="/captions.html" class="active">Caption Extractor</a>
+        <a href="/thumbnails.html">Thumbnail Save</a>
+    </nav>
+</header>
+
+<section class="hero-section" style="min-height: 50vh;">
+    <canvas id="particle-canvas"></canvas>
+    <div class="hero-content">
+        <h1>Instagram Captions Downloader</h1>
+        <p class="subtitle">Extract and copy the full caption/description from any Instagram post or Reel.</p>
+
+        <form id="downloadForm" class="input-area" autocomplete="off">
+            <div class="input-container">
+                <input type="url" id="videoUrl" placeholder="Paste Instagram link here..." autocomplete="off">
+                <button type="button" class="paste-btn" id="pasteBtn">
+                    <i class="fa-solid fa-paste"></i> Paste
+                </button>
+            </div>
+            <button type="submit" class="download-btn-main" id="submitBtn">
+                <i class="fa-solid fa-align-left"></i> Get Caption
+            </button>
+        </form>
+
+        <div id="loader" class="loader-wrap" style="display:none;">
+            <div class="ig-spinner"></div>
+            <p>Extracting caption...</p>
+        </div>
+        <div id="errorMsg" class="error-msg" style="display:none;"></div>
+    </div>
+</section>
+
+<!-- Result for Caption Extractor -->
+<div class="result-outer" id="resultOuter" style="display:none;">
+    <div class="result-card" style="max-width: 800px;">
+        <div class="result-info-col" style="padding: 30px;">
+            <p class="tool-label" style="text-align: center;">Full Caption</p>
+            <div id="resultCaptionDisplay" class="result-caption-preview" style="text-align: left; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; margin: 20px 0; max-height: 300px; overflow-y: auto;">
+                Full Caption Content...
+            </div>
+            <div class="result-actions">
+                <button onclick="copyToClipboard('caption', this)" class="dl-btn primary">
+                    <i class="fa-solid fa-copy"></i> Copy Full Caption
+                </button>
+                <button class="dl-btn secondary" onclick="resetForm()">
+                    <i class="fa-solid fa-rotate-right"></i> Extract Another
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main class="main-content">
+    <section class="info-section">
+        <h2>Why use our Caption Extractor?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fa-solid fa-clock"></i>
+                <h3>Save Time</h3>
+                <p>Don't waste time typing out captions by hand. Extract them in a second.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-hashtags"></i>
+                <h3>Hashtag Mining</h3>
+                <p>Quickly get hashtags and keywords from top-performing posts for your research.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-file-export"></i>
+                <h3>Export Anywhere</h3>
+                <p>Clean text ready to be pasted into your notes or content calendar.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-col">
+            <a href="/" class="logo footer-logo">
+                <i class="fa-solid fa-cloud-arrow-down"></i>
+                <span>IGDownloader</span>
+            </a>
+            <p style="margin-top:15px; color:var(--text-muted); font-size:0.9rem; max-width:260px;">Professional tools for modern content creators.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Creator Tools</h4>
+            <ul>
+                <li><a href="/">Video Downloader</a></li>
+                <li><a href="/captions.html">Caption Extractor</a></li>
+                <li><a href="/thumbnails.html">Thumbnail Save</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Legal</h4>
+            <ul>
+                <li><a href="/privacy.html">Privacy Policy</a></li>
+                <li><a href="/terms.html">Terms of Service</a></li>
+                <li><a href="/contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="copyright">
+        &copy; 2026 IGDownloader.
+    </div>
+</footer>
+
+<script src="/js/particles.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

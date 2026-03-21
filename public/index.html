@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IGDownloader - Best Free Instagram Video Downloader</title>
+    <meta name="description" content="Download Instagram videos, reels, stories and photos for free. No watermark, high quality, fast. Best Instagram downloader online.">
+    <!-- SEO / OG Tags -->
+    <meta property="og:title" content="IGDownloader - Save Instagram Videos, Reels & Stories">
+    <meta property="og:description" content="Download Instagram Reels and Videos in HD for free. No watermark, fast & privacy-focused tool.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://igdownloader.io">
+    <meta property="og:image" content="/img/favicon.png">
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+
+<!-- Navbar -->
+<header>
+    <a href="/" class="logo">
+        <i class="fa-solid fa-cloud-arrow-down"></i>
+        <span>IGDownloader</span>
+    </a>
+    <div class="menu-toggle" id="mobileMenuBtn">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+    <nav class="nav-right" id="navRight">
+        <a href="/" class="active">Home</a>
+        <a href="/captions.html">Caption Extractor</a>
+        <a href="/thumbnails.html">Thumbnail Save</a>
+    </nav>
+</header>
+
+<!-- Hero -->
+<section class="hero-section">
+    <canvas id="particle-canvas"></canvas>
+    <div class="hero-content">
+        <h1>Instagram Video Downloader</h1>
+        <p class="subtitle">Download Instagram Reels, Videos &amp; Stories for FREE — No Watermark</p>
+
+        <form id="downloadForm" class="input-area" autocomplete="off">
+            <div class="input-container">
+                <input
+                    type="url"
+                    id="videoUrl"
+                    name="videoUrl"
+                    placeholder="Paste Instagram link here (reel, post, story)..."
+                    autocomplete="off"
+                    spellcheck="false"
+                >
+                <button type="button" class="paste-btn" id="pasteBtn" title="Paste from clipboard">
+                    <i class="fa-solid fa-paste"></i> Paste
+                </button>
+            </div>
+            <button type="submit" class="download-btn-main" id="submitBtn">
+                <i class="fa-solid fa-download"></i> Download
+            </button>
+        </form>
+
+        <!-- Loading indicator (inside hero) -->
+        <div id="loader" class="loader-wrap" style="display:none;">
+            <div class="ig-spinner"></div>
+            <p>Fetching video info...</p>
+        </div>
+
+        <!-- Error message -->
+        <div id="errorMsg" class="error-msg" style="display:none;"></div>
+    </div>
+</section>
+
+<!-- Result Preview Card (shows after fetch) -->
+<div class="result-outer" id="resultOuter" style="display:none;">
+    <div class="result-card" id="resultCard">
+        <div class="result-thumb-col">
+            <img id="resultThumb" src="" alt="Video thumbnail">
+            <div class="toolkit-float">
+                <button onclick="copyToClipboard('caption', this)" title="Copy Captions"><i class="fa-solid fa-closed-captioning"></i></button>
+                <button onclick="copyToClipboard('title', this)" title="Copy Title"><i class="fa-solid fa-heading"></i></button>
+                <a id="thumbDlLink" href="#" title="Download Thumbnail"><i class="fa-solid fa-image"></i></a>
+            </div>
+        </div>
+        <div class="result-info-col">
+            <div class="result-author" id="resultAuthor">
+                <i class="fa-brands fa-instagram"></i>
+                <span id="authorHandle">@username</span>
+            </div>
+            <h2 id="resultTitle" class="result-title">Video Title</h2>
+            <div class="result-actions">
+                <a id="dlMp4Btn" href="#" class="dl-btn primary" download>
+                    <i class="fa-solid fa-film"></i> Download Video (MP4)
+                </a>
+                <div class="dual-actions">
+                    <button class="dl-btn secondary" onclick="resetForm()">
+                        <i class="fa-solid fa-rotate-right"></i> Another
+                    </button>
+                    <button class="dl-btn secondary toolkit-toggle" onclick="toggleToolkit()">
+                        <i class="fa-solid fa-screwdriver-wrench"></i> Tools
+                    </button>
+                </div>
+            </div>
+            <div id="creatorToolkit" class="creator-toolkit" style="display:none;">
+                <p>Creator Toolkit</p>
+                <div class="toolkit-grid">
+                    <button onclick="copyToClipboard('caption', this)">
+                        <i class="fa-solid fa-align-left"></i>
+                        <span>Get Captions</span>
+                    </button>
+                    <a id="thumbPlainLink" href="#">
+                        <i class="fa-solid fa-download"></i>
+                        <span>HD Cover</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content (SEO Sections) -->
+<main class="main-content">
+
+    <section id="how" class="info-section">
+        <h2>How to Download Instagram Videos?</h2>
+        <p class="section-sub">Simple 3-step process — no app, no sign in required.</p>
+        <div class="steps-grid">
+            <div class="step-card">
+                <i class="fa-brands fa-instagram"></i>
+                <h3>Copy the Link</h3>
+                <p>Open Instagram, go to the video or Reel, tap the <strong>…</strong> menu and select "Copy Link".</p>
+            </div>
+            <div class="step-card">
+                <i class="fa-solid fa-paste"></i>
+                <h3>Paste &amp; Search</h3>
+                <p>Paste the copied link into the search box above and click the "Download" button.</p>
+            </div>
+            <div class="step-card">
+                <i class="fa-solid fa-cloud-arrow-down"></i>
+                <h3>Save to Device</h3>
+                <p>Preview the thumbnail and author, then click "Download Video" to save it instantly.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="info-section">
+        <h2>Why Choose IGDownloader?</h2>
+        <p class="section-sub">Built for speed, privacy, and quality.</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fa-solid fa-bolt"></i>
+                <h3>Lightning Fast</h3>
+                <p>Download any Instagram video in seconds with zero waiting.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>No Login Required</h3>
+                <p>We never ask for your Instagram credentials. Your privacy is safe.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-star"></i>
+                <h3>HD Quality</h3>
+                <p>Downloads in the highest quality available — same as the original post.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-mobile-screen"></i>
+                <h3>Works Everywhere</h3>
+                <p>Works on Android, iPhone, Windows, Mac — any browser, any device.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-infinity"></i>
+                <h3>Unlimited Downloads</h3>
+                <p>No daily limit, no premium plan. Download as many videos as you want.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <h3>No Watermark</h3>
+                <p>Get clean, watermark-free videos perfect for editing and sharing.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="info-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+            <details class="faq-item">
+                <summary>Is IGDownloader free to use?</summary>
+                <p>Yes! IGDownloader is 100% free. No subscriptions, no hidden fees.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Can I download private Instagram videos?</summary>
+                <p>No. IGDownloader only works with publicly accessible posts and reels. Private accounts require you to be logged in, which we don't support for privacy reasons.</p>
+            </details>
+            <details class="faq-item">
+                <summary>What formats can I download?</summary>
+                <p>Videos are downloaded in MP4 format, which is compatible with all devices and video editors.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Where are videos saved?</summary>
+                <p>Videos save to your browser's default Downloads folder — usually "Downloads" on Windows/Mac or your Gallery on mobile.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Do you store my downloaded videos?</summary>
+                <p>No. We never store or cache your videos. All downloads stream directly from Instagram's servers to your device.</p>
+            </details>
+        </div>
+    </section>
+
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-col">
+            <a href="/" class="logo footer-logo">
+                <i class="fa-solid fa-cloud-arrow-down"></i>
+                <span>IGDownloader</span>
+            </a>
+            <p style="margin-top:15px; color:var(--text-muted); font-size:0.9rem; max-width:260px;">The most powerful and privacy-respecting Instagram video downloader on the web.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Creator Tools</h4>
+            <ul>
+                <li><a href="/">Video Downloader</a></li>
+                <li><a href="/captions.html">Captions Downloader</a></li>
+                <li><a href="/thumbnails.html">Thumbnail Downloader</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="#how">How it use</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Legal</h4>
+            <ul>
+                <li><a href="/privacy.html">Privacy Policy</a></li>
+                <li><a href="/terms.html">Terms of Service</a></li>
+                <li><a href="/contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="copyright">
+        &copy; 2026 IGDownloader. All rights reserved. Not affiliated with Instagram / Meta Platforms Inc.
+    </div>
+</footer>
+
+<button id="scrollTopBtn" title="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+<script src="/js/particles.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

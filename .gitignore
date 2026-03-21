@@ -1,0 +1,7 @@
+node_modules/
+.env
+*.log
+yt-dlp.exe
+public/img/og-preview.png
+# Don't push binary unless necessary, but user might want it.
+# I will exclude it for regular repo size but user can change.
